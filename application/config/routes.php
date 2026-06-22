@@ -1,54 +1,64 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-/*
-| -------------------------------------------------------------------------
-| URI ROUTING
-| -------------------------------------------------------------------------
-| This file lets you re-map URI requests to specific controller functions.
-|
-| Typically there is a one-to-one relationship between a URL string
-| and its corresponding controller class/method. The segments in a
-| URL normally follow this pattern:
-|
-|	example.com/class/method/id/
-|
-| In some instances, however, you may want to remap this relationship
-| so that a different class/function is called than the one
-| corresponding to the URL.
-|
-| Please see the user guide for complete details:
-|
-|	https://codeigniter.com/userguide3/general/routing.html
-|
-| -------------------------------------------------------------------------
-| RESERVED ROUTES
-| -------------------------------------------------------------------------
-|
-| There are three reserved routes:
-|
-|	$route['default_controller'] = 'welcome';
-|
-| This route indicates which controller class should be loaded if the
-| URI contains no data. In the above example, the "welcome" class
-| would be loaded.
-|
-|	$route['404_override'] = 'errors/page_missing';
-|
-| This route will tell the Router which controller/method to use if those
-| provided in the URL cannot be matched to a valid route.
-|
-|	$route['translate_uri_dashes'] = FALSE;
-|
-| This is not exactly a route, but allows you to automatically route
-| controller and method names that contain dashes. '-' isn't a valid
-| class or method name character, so it requires translation.
-| When you set this option to TRUE, it will replace ALL dashes in the
-| controller and method URI segments.
-|
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
-*/
-$route['default_controller'] = 'welcome';
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+$route['default_controller'] = 'Auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// Auth
+$route['login']  = 'Auth/index';
+$route['logout'] = 'Auth/logout';
+$route['proses_login'] = 'Auth/proses_login';
+
+// Dashboard
+$route['dashboard'] = 'admin/Dashboard/index';
+
+// Kamar
+$route['kamar']             = 'admin/Kamar/index';
+$route['kamar/tambah']      = 'admin/Kamar/tambah';
+$route['kamar/simpan']      = 'admin/Kamar/simpan';
+$route['kamar/edit/(:num)'] = 'admin/Kamar/edit/$1';
+$route['kamar/update/(:num)'] = 'admin/Kamar/update/$1';
+$route['kamar/hapus/(:num)'] = 'admin/Kamar/hapus/$1';
+
+// Penyewa
+$route['penyewa']             = 'admin/Penyewa/index';
+$route['penyewa/tambah']      = 'admin/Penyewa/tambah';
+$route['penyewa/simpan']      = 'admin/Penyewa/simpan';
+$route['penyewa/edit/(:num)'] = 'admin/Penyewa/edit/$1';
+$route['penyewa/update/(:num)'] = 'admin/Penyewa/update/$1';
+$route['penyewa/hapus/(:num)'] = 'admin/Penyewa/hapus/$1';
+
+// Pembayaran
+$route['pembayaran']             = 'admin/Pembayaran/index';
+$route['pembayaran/tambah']      = 'admin/Pembayaran/tambah';
+$route['pembayaran/simpan']      = 'admin/Pembayaran/simpan';
+$route['pembayaran/hapus/(:num)'] = 'admin/Pembayaran/hapus/$1';
+
+// Tagihan
+$route['tagihan']             = 'admin/Tagihan/index';
+$route['tagihan/buat']        = 'admin/Tagihan/buat';
+$route['tagihan/simpan']      = 'admin/Tagihan/simpan';
+$route['tagihan/detail/(:num)'] = 'admin/Tagihan/detail/$1';
+$route['tagihan/lunas/(:num)'] = 'admin/Tagihan/lunas/$1';
+$route['tagihan/hapus/(:num)'] = 'admin/Tagihan/hapus/$1';
+$route['tagihan/cetak/(:num)'] = 'admin/Tagihan/cetak/$1';
+
+// Laporan
+$route['laporan']        = 'admin/Laporan/index';
+$route['laporan/export_pdf']   = 'admin/Laporan/export_pdf';
+$route['laporan/export_excel'] = 'admin/Laporan/export_excel';
+
+// User
+$route['user']             = 'admin/User/index';
+$route['user/tambah']      = 'admin/User/tambah';
+$route['user/simpan']      = 'admin/User/simpan';
+$route['user/edit/(:num)'] = 'admin/User/edit/$1';
+$route['user/update/(:num)'] = 'admin/User/update/$1';
+$route['user/hapus/(:num)'] = 'admin/User/hapus/$1';
+
+// Transfer & Verifikasi
+$route['transfer/form/(:num)']      = 'admin/Transfer/form/$1';
+$route['transfer/simpan']           = 'admin/Transfer/simpan';
+$route['transfer/verifikasi']       = 'admin/Transfer/verifikasi';
+$route['transfer/detail/(:num)']    = 'admin/Transfer/detail/$1';
+$route['transfer/konfirmasi/(:num)']= 'admin/Transfer/konfirmasi/$1';
+$route['transfer/tolak/(:num)']     = 'admin/Transfer/tolak/$1';
