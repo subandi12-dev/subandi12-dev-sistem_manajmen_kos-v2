@@ -1,71 +1,160 @@
-###################
-What is CodeIgniter
-###################
+# 🏠 Sistem Manajemen Kos
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+Aplikasi web berbasis **Bebasis Frontend : HTL, CSS, JavaScrip, Boostrap 5, Backhend : PHP, Cidelnigter 3, dan Database : Mysql.** untuk mengelola operasional kos secara digital dan terpusat — mulai dari data kamar, penyewa, tagihan, pembayaran, hingga verifikasi bukti transfer.
 
-*******************
-Release Information
-*******************
+---
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+## 👥 Tim Pengembang
 
-**************************
-Changelog and New Features
-**************************
+| Nama | NIM | Role |
+|------|-----|------|
+| Ahmad Subandi | 24010110043 | Ketua / Backend (Login, Dashboard, Database, Laporan) |
+| Yusril Rifki Muzakki | 24010110001 | Frontend (UI/UX, Views: Dashboard, Kamar, Penyewa) |
+| Nur Fitri Rahmayani | 24010110019 | Full Stack (Pembayaran, Tagihan, Cetak PDF) |
+| Windi Ariyanti | 24010110018 | Dokumentasi / Backend (User Management, Laporan Ekspor, SRS) |
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+---
 
-*******************
-Server Requirements
-*******************
+## ✨ Fitur Utama
 
-PHP version 5.6 or newer is recommended.
+- 🔐 **Login Multi-user** — Admin (akses penuh) & Petugas (akses operasional)
+- 📊 **Dashboard** — Statistik real-time: total kamar, penyewa, tagihan belum lunas, grafik pemasukan bulanan
+- 🚪 **Manajemen Kamar** — CRUD data kamar (kode, tipe, harga, status)
+- 👤 **Manajemen Penyewa** — CRUD data penyewa + auto update status kamar
+- 🧾 **Pengelolaan Tagihan** — Buat tagihan bulanan, tandai lunas, cetak PDF
+- 💳 **Pengelolaan Pembayaran** — Catat transaksi (Transfer/Cash)
+- 🏦 **Konfirmasi & Verifikasi Transfer** — Upload bukti transfer, verifikasi oleh admin
+- 📈 **Laporan Pembayaran** — Filter rentang tanggal, ekspor PDF & Excel
+- 👥 **Manajemen User** — Kelola akun admin & petugas (khusus Administrator)
+- 🔔 **Notifikasi Jatuh Tempo** — Alert tagihan yang hampir/sudah jatuh tempo
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+---
 
-************
-Installation
-************
+## 🛠️ Teknologi
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+| Layer | Teknologi |
+|-------|-----------|
+| Frontend | HTML, CSS, JavaScript, Font Awesome |
+| Backend | PHP 7.4+, CodeIgniter 3 |
+| Database | MySQL |
+| Server | Apache (XAMPP) |
 
-*******
-License
-*******
+---
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+## ⚙️ Cara Menjalankan
 
-*********
-Resources
-*********
+### Prasyarat
+- [XAMPP](https://www.apachefriends.org) (PHP 7.4+ & MySQL)
+- Git
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+### Langkah Instalasi
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
+**1. Clone repository**
+```bash
+git clone https://github.com/[username]/sistem_manajemen_kos.git
+```
 
-***************
-Acknowledgement
-***************
+**2. Pindahkan ke folder htdocs**
+```
+C:\xampp\htdocs\kos\
+```
+Pastikan seluruh file (termasuk `application/`, `assets/`, `index.php`) langsung berada di dalam folder `kos/`.
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+**3. Jalankan XAMPP**
+
+Buka XAMPP Control Panel → Start **Apache** dan **MySQL**
+
+**4. Import database**
+
+- Buka `http://localhost/phpmyadmin`
+- Buat database baru bernama `kos_db`
+- Pilih database `kos_db` → tab **SQL** → paste isi file `database/kos_db.sql` → klik **Go**
+
+**5. Konfigurasi database**
+
+Buka `application/config/database.php`, sesuaikan:
+```php
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';        // kosong untuk XAMPP default
+$db['default']['database'] = 'kos_db';
+```
+
+**6. Konfigurasi base URL**
+
+Buka `application/config/config.php`, sesuaikan:
+```php
+$config['base_url'] = 'http://localhost/kos/';
+```
+
+**7. Buat folder uploads**
+
+Pastikan folder berikut ada dan memiliki izin tulis:
+```
+assets/uploads/bukti_transfer/
+```
+
+**8. Akses aplikasi**
+
+Buka browser dan akses:
+```
+http://localhost/kos/
+```
+
+---
+
+## 🔑 Akun Demo
+
+| Role | Email | Password |
+|------|-------|----------|
+| Administrator | admin@kost.com | password |
+| Petugas | petugas1@kost.com | password |
+
+---
+
+## 📁 Struktur Direktori
+
+```
+/
+├── README.md
+├── index.php
+├── database/
+│   └── kos_db.sql
+├── application/
+│   ├── config/
+│   ├── controllers/
+│   │   └── admin/
+│   ├── models/
+│   └── views/
+│       ├── admin/
+│       │   ├── dashboard/
+│       │   ├── kamar/
+│       │   ├── penyewa/
+│       │   ├── tagihan/
+│       │   ├── pembayaran/
+│       │   ├── transfer/
+│       │   ├── laporan/
+│       │   └── user/
+│       ├── auth/
+│       └── layouts/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── uploads/
+└── system/
+```
+
+---
+
+## 📌 Catatan Tambahan
+
+- Fitur **Verifikasi Transfer** memerlukan folder `assets/uploads/bukti_transfer/` dengan izin tulis (`chmod 755` di Linux/Mac)
+- Untuk reset password user, Admin dapat menggunakan menu **Pengaturan > User > Edit**
+- Laporan dapat diekspor dalam format **PDF** dan **Excel** melalui menu Laporan
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dibuat untuk keperluan **Tugas UAS Pemrograman Web**  
+Program Studi S1 Ilmu Komputer — Fakultas Teknik — Universitas Bumigora 2026
